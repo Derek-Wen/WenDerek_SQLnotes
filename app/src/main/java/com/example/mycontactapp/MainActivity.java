@@ -13,30 +13,28 @@ public class MainActivity extends AppCompatActivity {
 
     DatabaseHelper myDb;
     EditText editName;
-
+    EditText editPhone;
+    EditText editAddress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         editName = findViewById(R.id.editText_name);
-
+        editPhone = findViewById(R.id.editText_phone);
+        editAddress = findViewById(R.id.editText_address);
         myDb = new DatabaseHelper(this);
-        Log.d("MyContactApp", "MainActiity: instantiated the DatabaseHelper");
+        Log.d("MyContactApp","DatabaseHelper: instantiated the DatabaseHelper");
+
     }
-
     public void addData(View view){
-
-        boolean isInserted = myDb.insertData(editName.getText().toString());
-
+        boolean isInserted = myDb.insertData(editName.getText().toString(), editPhone.getText().toString(), editAddress.getText().toString());
         if(isInserted == true){
-            Toast.makeText(MainActivity.this, "Success - contact inserted", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this,"Success - contact inserted", Toast.LENGTH_LONG).show();
         }
         else{
-            Toast.makeText(MainActivity.this, "FAILED- not inserted", Toast.LENGTH_LONG).show();
-
+            Toast.makeText(MainActivity.this, "Failed - contact not inserted", Toast.LENGTH_LONG).show();
         }
-
     }
 
     public void viewData(View view){
