@@ -2,6 +2,7 @@ package com.example.mycontactapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -56,5 +57,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Log.d("MyContactApp", "DatabaseHelper: Contact insert PASSED");
             return true;
         }
+    }
+
+    public Cursor getAllData(){
+        //put Log.d's in here
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
+        return res;
     }
 }
