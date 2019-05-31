@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         boolean nameInserted = myDb.insertContact(editName.getText().toString(), editNumber.getText().toString(), editAddress.getText().toString());
 
         if (nameInserted){
+
             Toast.makeText(MainActivity.this, "Success - contact inserted", Toast.LENGTH_LONG).show();
         }
         else{
@@ -52,13 +53,11 @@ public class MainActivity extends AppCompatActivity {
 
         StringBuffer buffer = new StringBuffer();
         while (res.moveToNext()){
-            //append res columns 0, ... to the buffer
             buffer.append("ID: " + res.getString(0) +"\n");
             buffer.append("Name: " + res.getString(1) + "\n");
             buffer.append("Phone Number: " +res.getString(2) + "\n");
             buffer.append("Address: " + res.getString(3) + "\n");
         }
-
         showMessage("Data", buffer.toString());
     }
 
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         StringBuffer buffer = new StringBuffer();
         while (res.moveToNext()) {
-            if (!editName.getText().toString().equals("") && editNumber.getText().toString().equals("") && editAddress.getText().toString().equals("")) {// name ONLY
+            if (!editName.getText().toString().equals("") && editNumber.getText().toString().equals("") && editAddress.getText().toString().equals("")) {
                 if (res.getString(1).equals(editName.getText().toString())) {
                     buffer.append("ID: " + res.getString(0) + "\n");
                     buffer.append("Name: " + res.getString(1) + "\n");
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     buffer.append("Address: " + res.getString(3) + "\n");
                 }
             }
-            else if (editName.getText().toString().equals("") && !editNumber.getText().toString().equals("") && editAddress.getText().toString().equals("")){//number ONLY
+            else if (editName.getText().toString().equals("") && !editNumber.getText().toString().equals("") && editAddress.getText().toString().equals("")){
                 if (res.getString(2).equals(editNumber.getText().toString())) {
                     buffer.append("ID: " + res.getString(0) + "\n");
                     buffer.append("Name: " + res.getString(1) + "\n");
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     buffer.append("Address: " + res.getString(3) + "\n");
                 }
             }
-            else if (editName.getText().toString().equals("") && editNumber.getText().toString().equals("") && !editAddress.getText().toString().equals("")){ // address ONLY
+            else if (editName.getText().toString().equals("") && editNumber.getText().toString().equals("") && !editAddress.getText().toString().equals("")){
                 if (res.getString(3).equals(editAddress.getText().toString())) {
                     buffer.append("ID: " + res.getString(0) + "\n");
                     buffer.append("Name: " + res.getString(1) + "\n");
@@ -96,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     buffer.append("Address: " + res.getString(3) + "\n");
                 }
             }
-            else if (!editName.getText().toString().equals("") && !editNumber.getText().toString().equals("") && editAddress.getText().toString().equals("")){//name and number ONLY
+            else if (!editName.getText().toString().equals("") && !editNumber.getText().toString().equals("") && editAddress.getText().toString().equals("")){
                 if (res.getString(1).equals(editName.getText().toString()) && res.getString(2).equals(editNumber.getText().toString())) {
                     buffer.append("ID: " + res.getString(0) + "\n");
                     buffer.append("Name: " + res.getString(1) + "\n");
@@ -104,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     buffer.append("Address: " + res.getString(3) + "\n");
                 }
             }
-            else if (!editName.getText().toString().equals("") && editNumber.getText().toString().equals("") && !editAddress.getText().toString().equals("")){//name and address ONLY
+            else if (!editName.getText().toString().equals("") && editNumber.getText().toString().equals("") && !editAddress.getText().toString().equals("")){
                 if (res.getString(1).equals(editName.getText().toString()) && res.getString(3).equals(editAddress.getText().toString())){
                     buffer.append("ID: " + res.getString(0) + "\n");
                     buffer.append("Name: " + res.getString(1) + "\n");
@@ -112,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     buffer.append("Address: " + res.getString(3) + "\n");
                 }
             }
-            else if (editName.getText().toString().equals("") && !editNumber.getText().toString().equals("") && !editAddress.getText().toString().equals("")){//number and address ONLY
+            else if (editName.getText().toString().equals("") && !editNumber.getText().toString().equals("") && !editAddress.getText().toString().equals("")){
                 if (res.getString(2).equals(editNumber.getText().toString()) && res.getString(3).equals(editAddress.getText().toString())){
                     buffer.append("ID: " + res.getString(0) + "\n");
                     buffer.append("Name: " + res.getString(1) + "\n");
