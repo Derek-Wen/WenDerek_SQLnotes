@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addData(View view){
-
+        Cursor res = myDb.getAllData();
         boolean nameInserted = myDb.insertContact(editName.getText().toString(), editNumber.getText().toString(), editAddress.getText().toString());
 
         if (nameInserted){
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        showMessage("No results found", buffer.toString());
+        showMessage("Result", buffer.toString());
     }
 
     public void showMessage(String title, String message){

@@ -66,6 +66,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Log.d("MyContactApp", "DatabaseHelper: Contact insert SUCCESS");
             return true;
         }
+
     }
 
     public Cursor getAllData(){
